@@ -1,5 +1,25 @@
-# Vue 3 + TypeScript + Vite
+# Horoshop Frontend Developer Test Task
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is the AIScreen test assignment for the Frontend Developer (Vue.js) position.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+⸻
+
+# Requirements
+•	Node.js: v20.19.3
+•	Vite: v7.0.4
+
+⸻
+
+# Installation
+1.	Clone this repository
+2.	Install dependencies:
+
+npm install
+
+
+
+# Development
+
+Start the development server on http://localhost:5173/:
+
+npm run dev
