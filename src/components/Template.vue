@@ -3,6 +3,10 @@ import { ref, defineProps } from 'vue';
 
 const props = defineProps<{ id?: string }>();
 
+const emit = defineEmits<{
+  (e: 'save'): void
+}>()
+
 
 const form = ref({
   published: false,
@@ -12,9 +16,22 @@ const form = ref({
   file: null as File | null
 });
 
+const isLoading = ref(false);
 const isDragging = ref(false);
 const fileInput = ref<HTMLInputElement | null>(null);
 const previewSrc = ref<string | null>(null);
+
+function save() {
+  isLoading.value = true;
+  if (props.id) {
+
+  } else {
+    setTimeout(() => {
+      isLoading.value = false;
+      emit('save')
+    }, 1000)
+  }
+}
 
 function onDragOver(event: DragEvent) {
   event.preventDefault();
@@ -53,12 +70,24 @@ function onFileChange(event: Event) {
   <div :id="props.id" class="template-page">
     <header class="template-page__header">
       <div class="template-page__toggle">
-        <input type="checkbox" id="published" v-model="form.published" />
-        <label for="published">Неопубликован</label>
+        <label class="toggle-switch">
+          <input
+            type="checkbox"
+            id="published"
+            v-model="form.published"
+          />
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="toggle-label">
+          {{ form.published ? 'Опублікований' : 'Неопублікований' }}
+        </span>
       </div>
       <div class="template-page__btns">
         <button v-if="props.id" type="button" class="h-btn h-btn--sm h-btn--outlined  template-page-delete-btn">Видалити</button>
-        <button type="button" class="h-btn h-btn--sm template-page__save">Зберегти і вийти</button>
+        <button type="button" class="h-btn h-btn--sm template-page__save" @click="save">
+          <img v-show="isLoading" src="/spinner.svg" class="spinner" width="13" height="13" alt="spinner">
+          Зберегти і вийти
+        </button>
       </div>
 
     </header>
@@ -122,6 +151,12 @@ function onFileChange(event: Event) {
     }
   }
 
+  &__save {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+  }
+
   &__header {
     display: flex;
     align-items: center;
@@ -133,19 +168,6 @@ function onFileChange(event: Event) {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      margin-left: auto;
-
-      input {
-        width: 1.5rem;
-        height: 1rem;
-      }
-
-      label {
-        font-size: 0.9rem;
-      }
-    }
-
-    &__save {
       margin-left: auto;
     }
   }

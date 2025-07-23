@@ -108,6 +108,68 @@ button:focus-visible {
   cursor: not-allowed;
 }
 
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 1.5rem;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 1.5rem;
+    transition: background-color 0.3s;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 1.25rem;
+      width: 1.25rem;
+      left: 0.125rem;
+      bottom: 0.125rem;
+      background-color: #fff;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+  }
+
+  input:checked + .toggle-slider {
+    background-color: #8CC152;
+  }
+
+  input:checked + .toggle-slider:before {
+    transform: translateX(1.5rem);
+  }
+}
+
+.toggle-label {
+  margin-left: 0.75rem;
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
 .visually-hidden {
   display: none;
 }
