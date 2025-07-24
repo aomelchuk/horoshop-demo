@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import TemplatePerview from "../components/TemplatePerview.vue";
+import { useTemplateStore } from '../stores/templates'
 const router = useRouter();
+const templateStore = useTemplateStore();
 function goToAdd() {
   router.push('/template/add');
 }
@@ -14,7 +16,11 @@ function goToAdd() {
       <button @click="goToAdd" class="h-btn h-btn--sm">Додати дизайн</button>
     </div>
     <div class="home-page__body">
-      <TemplatePerview v-for="i in 8" :key="i"/>
+      <TemplatePerview
+        v-for="template in templateStore.templates"
+        :key="template.code as number"
+        :template="template"
+      />
     </div>
   </div>
 </template>

@@ -1,15 +1,26 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import type { TemplateForm } from "../types/template.ts";
+
+const props = defineProps<{ template: TemplateForm }>()
+
+const previewUrl = computed(() => {
+  const img = props.template.images?.[0];
+  if (typeof img === 'string') return img;
+  if (img instanceof File) return URL.createObjectURL(img);
+  return '/placeholder.webp';
+});
 
 </script>
 
 <template>
-  <a href="/template/1/edit" class="preview-card">
+  <a :href="`/template/${props.template.code}/edit`" class="preview-card">
     <div class="preview-card__thumb">
-       <img src="/designs/ostrov.png" width="300" height="400" alt="Ostrov preview" class="preview-card__image" />
+       <img :src="previewUrl" width="300" height="400" :alt="`${props.template.name} preview`" class="preview-card__image" />
     </div>
     <div class="preview-card__info">
-      <span class="preview-card__number">105</span>
-      <h3 class="preview-card__title">Ostrov</h3>
+      <span class="preview-card__number">{{props.template.code}}</span>
+      <h3 class="preview-card__title">{{ props.template.name }}</h3>
     </div>
   </a>
 </template>

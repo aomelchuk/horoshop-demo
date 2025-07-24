@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router';
 import Template from "../components/Template.vue";
+import {onMounted} from "vue";
 
  const route = useRoute();
  const isEdit = Boolean(route.params.id);
@@ -8,6 +9,7 @@ const router = useRouter();
 function goBack() {
   router.push('/');
 }
+
 </script>
 
 <template>
@@ -15,7 +17,7 @@ function goBack() {
    <button type="button" class="template-page-back-btn" @click="goBack">
      <img src="/icons/icon-back.svg" width="24" height="24" alt="">
    </button>
-    <Template :id="isEdit ? '1' : undefined" @save="goBack" />
+    <Template :id="isEdit ? +route.params.id : undefined" @save="goBack"  @delete="goBack"/>
   </div>
 </template>
 

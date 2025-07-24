@@ -1,0 +1,56 @@
+[
+  {
+    "images": [
+      "/designs/ostrov.png"
+    ],
+    "published": false,
+    "code": 105,
+    "name": "Ostrov",
+    "url": "https://design105.horoshop.ua/"
+  },
+  {
+    "images": [
+      "/designs/flora.png"
+    ],
+    "published": false,
+    "code": 104,
+    "name": "Flora",
+    "url": "https://design104.horoshop.ua/"
+  },
+  {
+    "images": [
+      "/designs/sunwear.png"
+    ],
+    "published": false,
+    "code": 103,
+    "name": "SunWear",
+    "url": "https://design103.horoshop.ua/"
+  },
+  {
+    "images": [
+      "/designs/flora.png"
+    ],
+    "published": false,
+    "code": 102,
+    "name": "Flora",
+    "url": "https://design102.horoshop.ua/"
+  },
+  {
+    "images": [
+      "/designs/flora.png"
+    ],
+    "published": false,
+    "code": 108,
+    "name": "Flora",
+    "url": "https://design108.horoshop.ua/"
+  },
+  {
+    "images": [
+
+    ],
+    "published": false,
+    "code": 109,
+    "name": "Flora",
+    "url": "https://design109.horoshop.ua/"
+  }
+]
